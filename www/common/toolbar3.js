@@ -816,7 +816,7 @@ MessengerUI, Messages) {
             title: buttonTitle,
             'class': "cp-toolbar-link-logo"
         }).append($('<img>', {
-            src: '/customize/images/logo_white.png?' + ApiConfig.requireConf.urlArgs
+            src: '/customize/images/logo_white.svg?' + ApiConfig.requireConf.urlArgs
         }));
         var onClick = function (e) {
             e.preventDefault();
