@@ -11,7 +11,7 @@ define(function() {
      * redirected to the drive.
      * You should never remove the drive from this list.
      */
-    config.availablePadTypes = ['drive', 'pad', 'sheet', 'code', 'slide', 'poll', 'kanban', 'whiteboard',
+    config.availablePadTypes = ['drive', 'pad',
                                 /*'oodoc', 'ooslide',*/ 'file', 'todo', 'contacts'];
     /* The registered only types are apps restricted to registered users.
      * You should never remove apps from this list unless you know what you're doing. The apps
