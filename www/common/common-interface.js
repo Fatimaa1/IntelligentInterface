@@ -775,7 +775,7 @@ define([
         }
     };
 
-    var $defaultIcon = $('<span>', {"class": "fa fa-file-text-o"});
+    var $defaultIcon = $('<span>', {"class": ""});
     UI.getIcon = function (type) {
         var $icon = $defaultIcon.clone();
 

@@ -2,25 +2,11 @@
     "main_title": "IIFBU: Collaborative Real Time Editor For Blinds",
     "type": {
         "pad": "Document",
-        "code": "Code",
-        "poll": "Poll",
-        "kanban": "Kanban",
-        "slide": "Presentation",
-        "drive": "IIFBU Drive",
-        "whiteboard": "Whiteboard",
-        "file": "File",
-        "media": "Media",
-        "todo": "Todo",
-        "contacts": "Contacts",
-        "sheet": "Sheet (Beta)"
+        "drive": "IIFBU Drive"
+    
     },
     "button_newpad": "New Rich Text pad",
-    "button_newcode": "New Code pad",
-    "button_newpoll": "New Poll",
-    "button_newslide": "New Presentation",
-    "button_newwhiteboard": "New Whiteboard",
-    "button_newkanban": "New Kanban",
-    "button_newsheet": "New Sheet",
+   
     "common_connectionLost": "<b>Server Connection Lost</b><br>You're now in read-only mode until the connection is back.",
     "websocketError": "Unable to connect to the websocket server...",
     "typeError": "This pad is not compatible with the selected application",

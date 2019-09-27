@@ -95,16 +95,7 @@ define(function() {
         fileupload: 'cptools-file-upload',
         folderupload: 'cptools-folder-upload',
         pad: 'cptools-pad',
-        code: 'cptools-code',
-        slide: 'cptools-slide',
-        poll: 'cptools-poll',
-        whiteboard: 'cptools-whiteboard',
-        todo: 'cptools-todo',
-        contacts: 'cptools-contacts',
-        kanban: 'cptools-kanban',
-        oodoc: 'fa-file-word-o',
-        ooslide: 'fa-file-powerpoint-o',
-        sheet: 'fa-file-excel-o',
+        
         drive: 'fa-hdd-o',
     };
 
