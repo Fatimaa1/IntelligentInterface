@@ -127,7 +127,7 @@ define([
 
     Exports.loginOrRegister = function (uname, passwd, isRegister, shouldImport, cb) {
         if (typeof(cb) !== 'function') { return; }
-
+        
         // Usernames are all lowercase. No going back on this one
         uname = uname.toLowerCase();
 
@@ -194,6 +194,7 @@ define([
             loadUserObject(opt, waitFor(function (err, rt) {
                 if (err) {
                     waitFor.abort();
+                    console.log(typeof(cb));
                     return void cb(err);
                 }
 
