@@ -276,6 +276,7 @@ MessengerUI, Messages) {
                     });
                     $nameInput.click(function (e) {
                         e.stopPropagation();
+                        console.log("Editing your name")
                        
                     });
                     $nameInput.on('keydown', function (e) {
@@ -289,7 +290,7 @@ MessengerUI, Messages) {
                             var newName = $nameInput.val(); // TODO clean
                             $nameValue.text(newName);
                             setDisplayName(newName);
-                           
+                            console.log("Your name has changed to", newName)
                             return;
                         }
                         if (e.which === 27) {
