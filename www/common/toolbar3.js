@@ -207,6 +207,7 @@ MessengerUI, Messages) {
             var $input = $userlistContent.find('.cp-toolbar-userlist-name-input');
             editingUserName.value = $input.val();
             editingUserName.select = [$input[0].selectionStart, $input[0].selectionEnd];
+           
         }
 
 
@@ -271,9 +272,11 @@ MessengerUI, Messages) {
                         $nameInput.show().focus().select();
                         editingUserName.state = true;
                         editingUserName.oldName = $nameInput.val();
+                        ;
                     });
                     $nameInput.click(function (e) {
                         e.stopPropagation();
+                       
                     });
                     $nameInput.on('keydown', function (e) {
                         if (e.which === 13 || e.which === 27) {
@@ -286,6 +289,7 @@ MessengerUI, Messages) {
                             var newName = $nameInput.val(); // TODO clean
                             $nameValue.text(newName);
                             setDisplayName(newName);
+                           
                             return;
                         }
                         if (e.which === 27) {
@@ -1117,13 +1121,17 @@ MessengerUI, Messages) {
             switch(type) {
                 case 1:
                     UI.log(Messages._getKey("notifyJoined", [name]));
+                
+                    console.log([name],"Has joined");
                     break;
                 case 0:
                     oldname = (!oldname) ? Messages.anonymous : oldname;
                     UI.log(Messages._getKey("notifyRenamed", [oldname, name]));
+                    console.log([oldname],"has changed his name to",[name]);
                     break;
                 case -1:
                     UI.log(Messages._getKey("notifyLeft", [name]));
+                    console.log([name], "has left");
                     break;
                 default:
                     console.log("Invalid type of notification");
@@ -1304,6 +1312,7 @@ MessengerUI, Messages) {
             if (toolbar.spinner) {
                 toolbar.spinner.text(Messages.forgotten);
             }
+            console.log("Pad is moved to the trash");
         };
 
         // When the pad is deleted from the server
@@ -1314,6 +1323,7 @@ MessengerUI, Messages) {
             if (toolbar.spinner) {
                 toolbar.spinner.text(Messages.deletedFromServer);
             }
+            console.log("Pad is deleted from the server");
         };
 
         // Show user colors in the userlist only if the app is compatible and if the user
