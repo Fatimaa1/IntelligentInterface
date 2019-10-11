@@ -919,6 +919,7 @@ MessengerUI, Messages) {
     };
 
     var createNewPad = function (toolbar, config) {
+        console.log("Welcome to IIFBU Drive.");
         var $newPad = toolbar.$top.find('.'+NEWPAD_CLS).show();
 
         var origin = config.metadataMgr.getPrivateData().origin;
@@ -1007,6 +1008,7 @@ MessengerUI, Messages) {
     };
 
     var createNotifications = function (toolbar, config) {
+        
         var $notif = toolbar.$top.find('.'+NOTIFICATIONS_CLS).show();
         var openNotifsApp = h('div.cp-notifications-gotoapp', h('p', Messages.openNotificationsApp || "Open notifications App"));
         $(openNotifsApp).click(function () {
