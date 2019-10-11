@@ -416,11 +416,13 @@ MessengerUI, Messages) {
         var hide = function () {
             $content.hide();
             $button.removeClass('cp-toolbar-button-active');
+           
         };
         var show = function () {
             if (Bar.isEmbed) { $content.hide(); return; }
             $content.show();
             $button.addClass('cp-toolbar-button-active');
+           
         };
         $closeIcon.click(function () {
             Common.setAttribute(['toolbar', 'userlist-drawer'], false);
@@ -428,18 +430,23 @@ MessengerUI, Messages) {
         });
         $button.click(function () {
             var visible = $content.is(':visible');
-            if (visible) { hide(); }
-            else { show(); }
+            if (visible) { hide();
+                console.log("UserList Hidden"); }
+            else { show(); 
+                console.log("UserList Shown");}
             visible = !visible;
             Common.setAttribute(['toolbar', 'userlist-drawer'], visible);
-            Feedback.send(visible?'USERLIST_SHOW': 'USERLIST_HIDE');
+            Feedback.send(visible?'USERLIST_SHOW': 'USERLIST_HIDE')
+           
         });
         show();
+        
         Common.getAttribute(['toolbar', 'userlist-drawer'], function (err, val) {
             if (val === false || window.innerWidth < 800)  {
                 return void hide();
             }
             show();
+           
         });
 
         initUserList(toolbar, config);

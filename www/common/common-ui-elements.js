@@ -1416,8 +1416,10 @@ define([
                 });
                 var updateIcon = function (isVisible) {
                     button.removeClass('fa-caret-down').removeClass('fa-caret-up');
-                    if (!isVisible) { button.addClass('fa-caret-down'); }
-                    else { button.addClass('fa-caret-up'); }
+                    if (!isVisible) { button.addClass('fa-caret-down');
+                console.log("Toolbox hidden ") }
+                    else { button.addClass('fa-caret-up');
+                    console.log("Toolbox Shown ") }
                 };
                 button.click(function (e) {
                     data.element.toggle();
