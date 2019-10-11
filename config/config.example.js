@@ -1,4 +1,3 @@
-
 /*@flow*/
 /*
     globals module
@@ -384,6 +383,7 @@ module.exports = {
         You have the option of specifying an alternative storage adaptor.
         These status of these alternatives are specified in their READMEs,
         which are available at the following URLs:
+
         mongodb: a noSQL database
             https://github.com/xwiki-labs/cryptpad-mongo-store
         amnesiadb: in memory storage
@@ -392,6 +392,7 @@ module.exports = {
             https://github.com/xwiki-labs/cryptpad-level-store
         sql: an adaptor for a variety of sql databases via knexjs
             https://github.com/xwiki-labs/cryptpad-sql-store
+
         For the most up to date solution, use the default storage adaptor.
     */
     storage: './storage/file',
