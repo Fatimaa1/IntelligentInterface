@@ -873,6 +873,7 @@ define([
             var id = classes[0];
             if (typeof(id) === 'string') {
                 framework.feedback(id.toUpperCase());
+                console.log("Successfully selected", id) ;
             }
         });
 

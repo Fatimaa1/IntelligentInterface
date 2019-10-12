@@ -2469,6 +2469,7 @@ define([
 
 
             var dropdownConfig = {
+                
                 text: $plusIcon.html() + '<span>'+Messages.fm_newButton+'</span>',
                 options: options,
                 feedback: 'DRIVE_NEWPAD_LOCALFOLDER',
@@ -4445,6 +4446,7 @@ define([
             /* add a history button */
             APP.histConfig = {
                 onLocal: function () {
+                    
                     UI.addLoadingScreen({ loadingText: Messages.fm_restoreDrive });
                     var data = {};
                     if (history.sfId) {

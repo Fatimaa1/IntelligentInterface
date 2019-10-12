@@ -1,3 +1,4 @@
+
 /*@flow*/
 /*
     globals module
@@ -116,14 +117,14 @@ module.exports = {
         "X-Content-Type-Options": "nosniff",
         "Access-Control-Allow-Origin": "*"
     },
-
+/*
     contentSecurity: baseCSP.join('; ') +
         "script-src 'self'" + domain,
 
     // CKEditor and OnlyOffice require significantly more lax content security policy in order to function.
     padContentSecurity: baseCSP.join('; ') +
         "script-src 'self' 'unsafe-eval' 'unsafe-inline'" + domain,
-
+*/
     /* it is recommended that you serve CryptPad over https
      * the filepaths below are used to configure your certificates
      */
@@ -383,7 +384,6 @@ module.exports = {
         You have the option of specifying an alternative storage adaptor.
         These status of these alternatives are specified in their READMEs,
         which are available at the following URLs:
-
         mongodb: a noSQL database
             https://github.com/xwiki-labs/cryptpad-mongo-store
         amnesiadb: in memory storage
@@ -392,7 +392,6 @@ module.exports = {
             https://github.com/xwiki-labs/cryptpad-level-store
         sql: an adaptor for a variety of sql databases via knexjs
             https://github.com/xwiki-labs/cryptpad-sql-store
-
         For the most up to date solution, use the default storage adaptor.
     */
     storage: './storage/file',

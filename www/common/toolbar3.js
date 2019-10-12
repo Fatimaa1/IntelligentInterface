@@ -207,6 +207,7 @@ MessengerUI, Messages) {
             var $input = $userlistContent.find('.cp-toolbar-userlist-name-input');
             editingUserName.value = $input.val();
             editingUserName.select = [$input[0].selectionStart, $input[0].selectionEnd];
+           
         }
 
 
@@ -271,9 +272,12 @@ MessengerUI, Messages) {
                         $nameInput.show().focus().select();
                         editingUserName.state = true;
                         editingUserName.oldName = $nameInput.val();
+                        ;
                     });
                     $nameInput.click(function (e) {
                         e.stopPropagation();
+                        console.log("Editing your name")
+                       
                     });
                     $nameInput.on('keydown', function (e) {
                         if (e.which === 13 || e.which === 27) {
@@ -286,6 +290,7 @@ MessengerUI, Messages) {
                             var newName = $nameInput.val(); // TODO clean
                             $nameValue.text(newName);
                             setDisplayName(newName);
+                            console.log("Your name has changed to", newName)
                             return;
                         }
                         if (e.which === 27) {
@@ -412,11 +417,13 @@ MessengerUI, Messages) {
         var hide = function () {
             $content.hide();
             $button.removeClass('cp-toolbar-button-active');
+           
         };
         var show = function () {
             if (Bar.isEmbed) { $content.hide(); return; }
             $content.show();
             $button.addClass('cp-toolbar-button-active');
+           
         };
         $closeIcon.click(function () {
             Common.setAttribute(['toolbar', 'userlist-drawer'], false);
@@ -424,18 +431,23 @@ MessengerUI, Messages) {
         });
         $button.click(function () {
             var visible = $content.is(':visible');
-            if (visible) { hide(); }
-            else { show(); }
+            if (visible) { hide();
+                console.log("UserList Hidden"); }
+            else { show(); 
+                console.log("UserList Shown");}
             visible = !visible;
             Common.setAttribute(['toolbar', 'userlist-drawer'], visible);
-            Feedback.send(visible?'USERLIST_SHOW': 'USERLIST_HIDE');
+            Feedback.send(visible?'USERLIST_SHOW': 'USERLIST_HIDE')
+           
         });
         show();
+        
         Common.getAttribute(['toolbar', 'userlist-drawer'], function (err, val) {
             if (val === false || window.innerWidth < 800)  {
                 return void hide();
             }
             show();
+           
         });
 
         initUserList(toolbar, config);
@@ -915,6 +927,7 @@ MessengerUI, Messages) {
     };
 
     var createNewPad = function (toolbar, config) {
+        console.log("Welcome to IIFBU Drive.");
         var $newPad = toolbar.$top.find('.'+NEWPAD_CLS).show();
 
         var origin = config.metadataMgr.getPrivateData().origin;
@@ -1003,6 +1016,7 @@ MessengerUI, Messages) {
     };
 
     var createNotifications = function (toolbar, config) {
+        
         var $notif = toolbar.$top.find('.'+NOTIFICATIONS_CLS).show();
         var openNotifsApp = h('div.cp-notifications-gotoapp', h('p', Messages.openNotificationsApp || "Open notifications App"));
         $(openNotifsApp).click(function () {
@@ -1117,13 +1131,17 @@ MessengerUI, Messages) {
             switch(type) {
                 case 1:
                     UI.log(Messages._getKey("notifyJoined", [name]));
+                
+                    console.log([name],"Has joined");
                     break;
                 case 0:
                     oldname = (!oldname) ? Messages.anonymous : oldname;
                     UI.log(Messages._getKey("notifyRenamed", [oldname, name]));
+                    console.log([oldname],"has changed his name to",[name]);
                     break;
                 case -1:
                     UI.log(Messages._getKey("notifyLeft", [name]));
+                    console.log([name], "has left");
                     break;
                 default:
                     console.log("Invalid type of notification");
@@ -1304,6 +1322,7 @@ MessengerUI, Messages) {
             if (toolbar.spinner) {
                 toolbar.spinner.text(Messages.forgotten);
             }
+            console.log("Pad is moved to the trash");
         };
 
         // When the pad is deleted from the server
@@ -1314,6 +1333,7 @@ MessengerUI, Messages) {
             if (toolbar.spinner) {
                 toolbar.spinner.text(Messages.deletedFromServer);
             }
+            console.log("Pad is deleted from the server");
         };
 
         // Show user colors in the userlist only if the app is compatible and if the user
