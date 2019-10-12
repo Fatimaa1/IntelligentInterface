@@ -784,12 +784,14 @@ define([
             cb($dom[0]);
         };
         framework.setFileImporter({ accept: 'text/html' }, function (content, f, cb) {
+            console.log("Your document is imported");
             importMediaTags(domFromHTML(content).body, function (dom) {
                 cb(Hyperjson.fromDOM(dom));
             });
         }, true);
 
         framework.setFileExporter(Exporter.ext, function (cb) {
+            console.log("Write Pad is exported");
             Exporter.main(inner, cb);
         }, true);
 
