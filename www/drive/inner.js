@@ -1034,10 +1034,12 @@ define([
             var colors = ["", "#f23c38", "#ff0073", "#da0eba", "#9d00ac", "#6c19b3", "#4a42b1", "#3d8af0", "#30a0f1", "#1fb9d1", "#009686", "#45b354", "#84c750", "#c6e144", "#faf147", "#fbc423", "#fc9819", "#fd5227", "#775549", "#9c9c9c", "#607a89"];
             var colorsElements = [];
             var currentElement = null;
+      
             colors.forEach(function (color, i) {
                 var element = h("span.cp-app-drive-color-picker-color", [
                     h("span.cptools.cp-app-drive-icon-folder.cp-app-drive-content-icon" + (i === 0 ? ".cptools-folder-no-color" : ".cptools-folder")),
                     h("span.fa.fa-check")
+                   
                 ]);
                 $(element).css("color", colors[i]);
                 if (colors[i] === currentColor) {
@@ -3798,6 +3800,7 @@ define([
                 pickFolderColor(paths[0].element, currentColor, function (color) {
                     paths.forEach(function (p) {
                         setFolderColor(p.element, p.path, color);
+                        
                     });
                     refresh();
                 });

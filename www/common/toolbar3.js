@@ -931,7 +931,7 @@ MessengerUI, Messages) {
     };
 
     var createNewPad = function (toolbar, config) {
-        console.log("Welcome to IIFBU Drive.");
+        console.log("Welcome to IIFBU Pad.");
         var $newPad = toolbar.$top.find('.'+NEWPAD_CLS).show();
 
         var origin = config.metadataMgr.getPrivateData().origin;
@@ -1053,10 +1053,13 @@ MessengerUI, Messages) {
             var n = $(div).find('.cp-notification').length;
             $button.removeClass('fa-bell-o').removeClass('fa-bell');
             $n.removeClass('cp-notifications-small');
+           
             if (n === 0) {
                 $button.attr('title', Messages.notifications_empty);
+             //  console.log("Empty Notifications");
                 $empty.show();
                 $n.hide();
+            
                 return void $button.addClass('fa-bell-o');
             }
             if (n > 99) {

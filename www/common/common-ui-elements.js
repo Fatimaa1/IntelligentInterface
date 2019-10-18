@@ -1737,6 +1737,7 @@ define([
         $(closeButton).click(function (e) {
             e.stopPropagation();
             toggleHelp(true);
+            console.log("Getting Started Message closed")
         });
         $toolbarButton.click(function () {
             toggleHelp();
@@ -2014,6 +2015,7 @@ define([
         };
         if (config.buttonTitle) {
             containerConfig.title = config.buttonTitle;
+           
         }
 
         if (!config.container) {
@@ -2046,6 +2048,7 @@ define([
             if ($el.length !== 1) { return; }
             $innerblock.find('.cp-dropdown-element-active').removeClass('cp-dropdown-element-active');
             $el.addClass('cp-dropdown-element-active');
+        
             var scroll = $el.position().top + $innerblock.scrollTop();
             if (scroll < $innerblock.scrollTop()) {
                 $innerblock.scrollTop(scroll);
@@ -2068,6 +2071,8 @@ define([
                 var $val = $innerblock.find('[data-value="'+value+'"]');
                 setActive($val);
                 $innerblock.scrollTop($val.position().top + $innerblock.scrollTop());
+              
+                
             }
             if (config.feedback) { Feedback.send(config.feedback); }
         };
@@ -2078,6 +2083,7 @@ define([
             $('.cp-dropdown-content').hide();
             try {
                 $('iframe').each(function (idx, ifrw) {
+         
                     $(ifrw).contents().find('.cp-dropdown-content').hide();
                 });
             } catch (er) {
@@ -2101,6 +2107,7 @@ define([
                         var $prev = $value.prev();
                         $prev.mouseenter();
                         setActive($prev);
+                    
                     }
                 }
                 if (e.which === 40) { // Down
@@ -2109,16 +2116,19 @@ define([
                         var $next = $value.next();
                         $next.mouseenter();
                         setActive($next);
+                  
                     }
                 }
                 if (e.which === 13) { //Enter
                     if ($value.length) {
+                          
                         $value.click();
                         hide();
                     }
                 }
                 if (e.which === 27) { // Esc
                     $value.mouseleave();
+               
                     hide();
                 }
             });
