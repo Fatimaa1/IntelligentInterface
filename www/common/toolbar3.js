@@ -13,7 +13,7 @@ define([
 ], function ($, Config, ApiConfig, UIElements, UI, Hash, Util, Feedback, h,
 MessengerUI, Messages) {
     var Common;
-
+    var synth = window.speechSynthesis;
     var Bar = {
         constants: {},
     };
@@ -159,6 +159,8 @@ MessengerUI, Messages) {
     var setDisplayName = function (newName) {
         Common.setDisplayName(newName, function (err) {
             if (err) {
+                var utterThis = new SpeechSynthesisUtterance("Couldn't set username");
+                synth.speak(utterThis);
                 console.log("Couldn't set username");
                 console.error(err);
                 return;
@@ -276,6 +278,8 @@ MessengerUI, Messages) {
                     });
                     $nameInput.click(function (e) {
                         e.stopPropagation();
+                        var utterThis = new SpeechSynthesisUtterance("Editing your name");
+                        synth.speak(utterThis);
                         console.log("Editing your name")
                        
                     });
@@ -290,6 +294,8 @@ MessengerUI, Messages) {
                             var newName = $nameInput.val(); // TODO clean
                             $nameValue.text(newName);
                             setDisplayName(newName);
+                            var utterThis = new SpeechSynthesisUtterance("Your name has changed to" + newName);
+                            synth.speak(utterThis);
                             console.log("Your name has changed to", newName)
                             return;
                         }
@@ -432,8 +438,12 @@ MessengerUI, Messages) {
         $button.click(function () {
             var visible = $content.is(':visible');
             if (visible) { hide();
+                var utterThis = new SpeechSynthesisUtterance("Userlist Hidden");
+                synth.speak(utterThis);
                 console.log("UserList Hidden"); }
             else { show(); 
+                var utterThis = new SpeechSynthesisUtterance("Userlist Shown");
+                synth.speak(utterThis);
                 console.log("UserList Shown");}
             visible = !visible;
             Common.setAttribute(['toolbar', 'userlist-drawer'], visible);
@@ -1138,19 +1148,26 @@ MessengerUI, Messages) {
             switch(type) {
                 case 1:
                     UI.log(Messages._getKey("notifyJoined", [name]));
-                
+                    var utterThis = new SpeechSynthesisUtterance([name],"Has joined");
+                    synth.speak(utterThis);
                     console.log([name],"Has joined");
                     break;
                 case 0:
                     oldname = (!oldname) ? Messages.anonymous : oldname;
                     UI.log(Messages._getKey("notifyRenamed", [oldname, name]));
+                    var utterThis = new SpeechSynthesisUtterance([oldname],"has changed his name to",[name]);
+                    synth.speak(utterThis);
                     console.log([oldname],"has changed his name to",[name]);
                     break;
                 case -1:
                     UI.log(Messages._getKey("notifyLeft", [name]));
+                    var utterThis = new SpeechSynthesisUtterance([name], "has left");
+                    synth.speak(utterThis);
                     console.log([name], "has left");
                     break;
                 default:
+                    var utterThis = new SpeechSynthesisUtterance("Invalid type of notification");
+                    synth.speak(utterThis);
                     console.log("Invalid type of notification");
                     break;
             }
@@ -1329,6 +1346,8 @@ MessengerUI, Messages) {
             if (toolbar.spinner) {
                 toolbar.spinner.text(Messages.forgotten);
             }
+            var utterThis = new SpeechSynthesisUtterance("Pad is moved to the trash");
+            synth.speak(utterThis);
             console.log("Pad is moved to the trash");
         };
 
@@ -1340,6 +1359,8 @@ MessengerUI, Messages) {
             if (toolbar.spinner) {
                 toolbar.spinner.text(Messages.deletedFromServer);
             }
+            var utterThis = new SpeechSynthesisUtterance("Pad is deleted from the server");
+            synth.speak(utterThis);
             console.log("Pad is deleted from the server");
         };
 

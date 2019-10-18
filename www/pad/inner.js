@@ -66,7 +66,7 @@ define([
 )
 {
     var DiffDom = window.diffDOM;
-
+    var synth = window.speechSynthesis;
     var slice = function (coll) {
         return Array.prototype.slice.call(coll);
     };
@@ -787,6 +787,8 @@ define([
             cb($dom[0]);
         };
         framework.setFileImporter({ accept: 'text/html' }, function (content, f, cb) {
+            var utterThis = new SpeechSynthesisUtterance("Your document is imported");
+            synth.speak(utterThis);
             console.log("Your document is imported");
             importMediaTags(domFromHTML(content).body, function (dom) {
                 cb(Hyperjson.fromDOM(dom));
@@ -794,6 +796,8 @@ define([
         }, true);
 
         framework.setFileExporter(Exporter.ext, function (cb) {
+            var utterThis = new SpeechSynthesisUtterance("Write Pad is exported");
+            synth.speak(utterThis);
             console.log("Write Pad is exported");
             Exporter.main(inner, cb);
         }, true);
