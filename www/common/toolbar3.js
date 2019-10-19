@@ -941,6 +941,8 @@ MessengerUI, Messages) {
     };
 
     var createNewPad = function (toolbar, config) {
+        var utterThis = new SpeechSynthesisUtterance("Welcome to Intelligent Interface for Blind Users Write Pad");
+        synth.speak(utterThis);
         console.log("Welcome to IIFBU Pad.");
         var $newPad = toolbar.$top.find('.'+NEWPAD_CLS).show();
 
