@@ -18,7 +18,7 @@ define([
 ], function ($, Config, Util, Hash, Language, UI, Constants, Feedback, h, MediaTag, Clipboard,
              Messages, AppConfig, Pages, NThen) {
     var UIElements = {};
-
+    var synth = window.speechSynthesis;
     // Configure MediaTags to use our local viewer
     if (MediaTag) {
         MediaTag.setDefaultConfig('pdf', {
@@ -1419,6 +1419,8 @@ define([
                     if (!isVisible) { button.addClass('fa-caret-down');
                 console.log("Toolbox hidden ") }
                     else { button.addClass('fa-caret-up');
+                    var utterThis = new SpeechSynthesisUtterance("Toolbox Shown ");
+                    synth.speak(utterThis);
                     console.log("Toolbox Shown ") }
                 };
                 button.click(function (e) {
