@@ -12,7 +12,7 @@ define([
         src: '/customize/cryptpad-new-logo-colors-logoonly.png?' + urlArgs
     });
 
-    var brand = h('h1#cp-brand', 'IIFBU');
+    var brand = h('h1#cp-brand', 'CryptPad');
     var message = h('h2#cp-scramble', Messages.four04_pageNotFound);
     var title = h('h2#cp-title', "404");
 
