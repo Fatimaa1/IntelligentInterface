@@ -36,7 +36,7 @@ define([
     Test)
 {
     var SaveAs = window.saveAs;
-
+    var synth = window.speechSynthesis;
     var UNINITIALIZED = 'UNINITIALIZED';
 
     var STATE = Object.freeze({
@@ -343,6 +343,8 @@ define([
                         setTimeout(function () { common.gotoURL(); }, 1000);
                         return;
                     }
+                    var utterThis = new SpeechSynthesisUtterance('updating title');
+                    synth.speak(utterThis);
                     console.log('updating title');
                     title.updateTitle(title.defaultTitle);
                     evOnDefaultContentNeeded.fire();

@@ -882,6 +882,8 @@ define([
             var id = classes[0];
             if (typeof(id) === 'string') {
                 framework.feedback(id.toUpperCase());
+                var utterThis = new SpeechSynthesisUtterance("selected"+ id);
+                synth.speak(utterThis);
                 console.log("Successfully selected", id) ;
             }
         });
