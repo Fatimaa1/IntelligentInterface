@@ -672,7 +672,6 @@ MessengerUI, Messages) {
         var $input = $('<input>', {
             type: 'text',
             placeholder: placeholder
-           
         }).appendTo($hoverable).hide();
         if (config.readOnly !== 1) {
             $text.attr("title", Messages.clickToEdit);
@@ -693,10 +692,8 @@ MessengerUI, Messages) {
         $input.on('mousedown', function (e) {
             if (!$input.is(":focus")) {
                 $input.focus();
-                
             }
             e.stopPropagation();
-           
             return true;
         });
         var save = function () {
@@ -704,7 +701,6 @@ MessengerUI, Messages) {
             if (name === "") {
                 name = $input.attr('placeholder');
             }
-
             updateTitle(name, function (err/*, newtitle*/) {
                 if (err) { return console.error(err); }
                 //$text.text(newtitle);
@@ -712,13 +708,11 @@ MessengerUI, Messages) {
                 $text.show();
                 $pencilIcon.show();
                 $saveIcon.hide();
-                console.log("your title has been updated to", name);
             });
         };
         $input.on('keyup', function (e) {
             if (e.which === 13 && toolbar.connected === true) {
                 save();
-               
             } else if (e.which === 27) {
                 $input.hide();
                 $text.show();
@@ -741,7 +735,6 @@ MessengerUI, Messages) {
             $input.show();
             $input.focus();
             $pencilIcon.hide();
-            console.log("Editing your title", name);
             $saveIcon.show();
         };
         $text.on('click', displayInput);
@@ -778,7 +771,10 @@ MessengerUI, Messages) {
             ]);
             var $msg = $('<span>', {
                 'class': 'cp-pad-not-pinned'
-            })
+            }).append([
+                $('<span>', {'class': 'fa fa-exclamation-triangle', 'title': pnpTitle}),
+                $('<span>', {'class': 'cp-pnp-msg'}).append(pnpMsg)
+            ]);
             $msg.find('a.cp-pnp-login').click(function (ev) {
                 ev.preventDefault();
                 Common.setLoginRedirect(function () {
