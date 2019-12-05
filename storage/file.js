@@ -769,7 +769,7 @@ var getChannel = function (
         if (!channel.writeStream) {
             throw new Error("getChannel() complete called without channel writeStream");
         }
-        whenLoaded.forEach(function (wl) { wl(err, (err) ? undefined : channel); });
+        //whenLoaded.forEach(function (wl) { wl(err, (err) ? undefined : channel); });
     };
     var fileExists;
     var errorState;
@@ -808,7 +808,7 @@ var getChannel = function (
 const messageBin = (env, chanName, msgBin, cb) => {
     getChannel(env, chanName, function (err, chan) {
         if (!chan) {
-            cb(err);
+            //cb(err);
             return;
         }
         let called = false;
